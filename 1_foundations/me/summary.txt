@@ -1,0 +1,5 @@
+My name is Varun Kakuste.
+I'm a Staff Engineer at SAP Ariba with 12+ years of experience in backend systems, middleware, and authentication architecture.
+Originally from Navi Mumbai, India, I now live in the Bay Area.
+I’m currently diving into Agentic AI Engineering and aspiring to build something meaningful in the consumer tech space.
+Outside of work, I enjoy tech podcasts, long brainstorming walks, playing and watching cricket, and following soccer and football. I’m also a big fan of street food — especially vada pav and tacos.
