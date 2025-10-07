@@ -1,0 +1,57 @@
+create_system_design:
+  description: >
+    Create comprehensive system design and technical specifications for {feature_name} in {service_name}.
+    Define detailed use cases, user stories, API contracts, data models, and architectural patterns.
+    Provide clear technical specifications that backend_engineer can implement, frontend_engineer
+    can build UI components, and qa_lead can create test plans and unit tests.
+  expected_output: >
+    Comprehensive system design with:
+    - Detailed use cases and user stories
+    - API contracts and data models
+    - Database schema and relationships
+    - System architecture and component interactions
+    - Technical requirements and constraints
+    - Implementation guidelines and patterns
+    - Test scenarios and acceptance criteria
+  agent: engineering_lead
+  output_file: output/{service_name}/{feature_name}/system_design.md
+
+create_backend_implementation:
+  description: >
+    Create simple Python business logic methods for {feature_name} in {service_name}.
+    Focus only on core business logic functions with sample data - no APIs, no documentation, no complex setup.
+    Generate basic Python methods that implement the core functionality using sample/mock data.
+    **IMPORTANT: Write actual code to files, not just display in logs.**
+  expected_output: >
+    Simple Python business logic with:
+    - Basic Python methods implementing core functionality
+    - Sample/mock data for testing
+    - Methods for habit progress calculation, streak tracking, and basic analytics
+    - All code written to actual files in ./output/{service_name}/{feature_name}/
+    - No syntax errors or compilation issues
+    - Code can be imported and used by other modules
+  agent: backend_engineer
+  context: 
+    - create_system_design
+
+create_frontend_interface:
+  description: >
+    Create a simple Gradio user interface for {feature_name} in {service_name}.
+    Build a clean, functional web interface that imports and uses the backend business logic
+    created by the backend_engineer. The UI should display real data by calling the backend
+    methods, not hardcoded values. Make sure the UI actually connects to and uses the
+    business logic from the backend implementation.
+    **IMPORTANT: Write actual code to files, not just display in logs.**
+  expected_output: >
+    Simple Gradio UI with:
+    - Interactive dashboard that imports and uses the backend business logic
+    - Input fields for habit data entry that connect to backend methods
+    - Display components showing real progress metrics and streaks from backend calculations
+    - UI displays actual results from backend business logic, not hardcoded values
+    - All code written to actual files in ./output/{service_name}/{feature_name}/
+    - No syntax errors or compilation issues
+    - UI can be launched and used immediately
+    - **VERIFY: UI actually imports and uses the backend business logic**
+  agent: frontend_engineer
+  context: 
+    - create_backend_implementation
